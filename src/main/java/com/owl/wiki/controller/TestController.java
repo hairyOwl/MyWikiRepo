@@ -1,5 +1,6 @@
 package com.owl.wiki.controller;
 
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -14,6 +15,12 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController //返回字符串或Json对象 @Controller返回一个页面
 public class TestController {
 
+    // 自定义配置项目 如动态变量 配置缺省值防止未配置时无法启动
+    // 配置文件的值 优先级高于 注解中的缺省值
+    //@Value("${test.hello}")
+    @Value("${test.hello:这是缺省值}")
+    private String testHello;
+
     /*
     * 常见的网络请求方式 GET,POST,PUT,DELETE
     * */
@@ -21,7 +28,7 @@ public class TestController {
 //    @RequestMapping("/hello") //支持所有请求方式
     @GetMapping("/hello") //RESTful风格指定接口类型
     public String hello(){
-        return "Hello owl";
+        return "Hello owl"+testHello;
     }
 
     @PostMapping("/hello/post") //RESTful风格指定接口类型
