@@ -9,3 +9,9 @@ Vue3+SpringBoot 知识库搭建
 - spring boot 2.4.0
 - jdk 8
 - mysql 8
+
+## 功能or开发流程
+### 1.配置
+ - 环境配置
+ - 日志优化(Logback)
+ - 集成热部署
