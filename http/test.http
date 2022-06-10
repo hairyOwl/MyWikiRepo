@@ -20,3 +20,7 @@ Content-Type: application/x-www-form-urlencoded
 
 name=ptrp带参数的post请求
 ###
+
+GET http://localhost:8888/test/list
+
+###

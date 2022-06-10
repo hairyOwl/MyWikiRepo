@@ -1,9 +1,14 @@
 package com.owl.wiki.controller;
 
+import com.owl.wiki.domain.Test;
+import com.owl.wiki.service.TestService;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RestController;
+
+import javax.annotation.Resource;
+import java.util.List;
 
 /**
  * @description: Hello 接口
@@ -20,7 +25,8 @@ public class TestController {
     //@Value("${test.hello}")
     @Value("${test.hello:这是缺省值}")
     private String testHello;
-
+    @Resource
+    private TestService testService; //testService
     /*
     * 常见的网络请求方式 GET,POST,PUT,DELETE
     * */
@@ -34,5 +40,10 @@ public class TestController {
     @PostMapping("/hello/post") //RESTful风格指定接口类型
     public String helloPost(String name){
         return "Hello post," + name;
+    }
+
+    @GetMapping("/test/list") //RESTful风格指定接口类型
+    public List<Test> list(){
+        return testService.list();
     }
 }
