@@ -3,16 +3,16 @@ GET http://localhost:8888/hello
 #Accept: application/json
 Accept: text/plain
 
-> {%
-client.test("test-hello", function() {
-    client.log("测试/hello接口");
-    client.log("body: "+response.body);
-    client.log("JSON: "+JSON.stringify(response.body));
-    //assert 如果参数1结果为false 返回参数2
-    client.assert(response.status === 200, "Response status is not 200");
-    client.assert(response.body === "Hello owl！", "body 验证失败");
-});
-%}
+#> {%
+#client.test("test-hello", function() {
+#    client.log("测试/hello接口");
+#    client.log("body: "+response.body);
+#    client.log("JSON: "+JSON.stringify(response.body));
+#    //assert 如果参数1结果为false 返回参数2
+#    client.assert(response.status === 200, "Response status is not 200");
+#    client.assert(response.body === "Hello owl！", "body 验证失败");
+#});
+#%}
 ###
 
 POST http://localhost:8888/hello/post
