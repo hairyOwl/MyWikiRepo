@@ -5,11 +5,10 @@ import com.owl.wiki.domain.EbookExample;
 import com.owl.wiki.mapper.EbookMapper;
 import com.owl.wiki.request.EbookRequest;
 import com.owl.wiki.response.EbookResponse;
-import org.springframework.beans.BeanUtils;
+import com.owl.wiki.utils.CopyUtil;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
-import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -32,12 +31,12 @@ public class EbookService {
         criteria.andNameLike("%"+req.getName()+"%"); //名称模糊查询
         List<Ebook> ebookList = ebookMapper.selectByExample(ebookExample);
         //将List<Ebook> 转为 List<EbookResponse>
-        List<EbookResponse> responseList = new ArrayList<>();
-        for (Ebook ebook : ebookList) { //对象的复制
-            EbookResponse ebookResponse = new EbookResponse();
-            BeanUtils.copyProperties(ebook,ebookResponse); //对象A 复制到 对象B  org.springframework.beans;
+        /*for (Ebook ebook : ebookList) { //对象的复制
+            //EbookResponse ebookResponse = new EbookResponse();
+            //BeanUtils.copyProperties(ebook,ebookResponse); //对象A 复制到 对象B  org.springframework.beans;
+            EbookResponse ebookResponse = CopyUtil.copy(ebook, EbookResponse.class);
             responseList.add(ebookResponse);
-        }
-        return  responseList;
+        }*/
+        return CopyUtil.copyList(ebookList,EbookResponse.class);
     }
 }

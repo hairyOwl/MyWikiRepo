@@ -29,14 +29,14 @@ src
 │    ├─  main
 │    │     ├─ java
 │    │     │    └─ com.owl.wiki
+│    │     │        ├─ controller
 │    │     │        ├─ domain //实体类与数据表的映射
 │    │     │        ├─ mapper //持久层 接口
+│    │     │        ├─ request //请求体封装
+│    │     │        ├─ response //返回体通用处理
 │    │     │        ├─ service //服务层
-│    │     │        ├─ req //请求体封装
-│    │     │        ├─ resp //返回体通用处理
-│    │     │        ├─ controller
-│    │     │        │       └─ TestController.java
-│    │     │        └─ WikiApplication.java
+│    │     │        ├─ utils //工具类
+│    │     │        └─ WikiApplication.java //主程序类
 │    │     └─ resources
 │    │           ├─ generator //Mybatis Generator
 │    │           ├─ mapper //sql 脚本
