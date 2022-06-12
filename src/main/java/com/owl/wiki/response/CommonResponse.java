@@ -1,4 +1,4 @@
-package com.owl.wiki.resp;
+package com.owl.wiki.response;
 
 /**
  * @description: 通用返回体
@@ -7,7 +7,7 @@ package com.owl.wiki.resp;
  * @date: 2022/6/12 16:10
  */
 
-public class CommonResp<T> {
+public class CommonResponse<T> {
 
     private boolean success = true; //业务上的成功或失败
     private String message; //返回信息

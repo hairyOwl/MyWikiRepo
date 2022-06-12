@@ -32,6 +32,7 @@ src
 │    │     │        ├─ domain //实体类与数据表的映射
 │    │     │        ├─ mapper //持久层 接口
 │    │     │        ├─ service //服务层
+│    │     │        ├─ req //请求体封装
 │    │     │        ├─ resp //返回体通用处理
 │    │     │        ├─ controller
 │    │     │        │       └─ TestController.java

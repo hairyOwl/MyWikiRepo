@@ -1,7 +1,8 @@
 package com.owl.wiki.controller;
 
-import com.owl.wiki.domain.Ebook;
-import com.owl.wiki.resp.CommonResp;
+import com.owl.wiki.request.EbookRequest;
+import com.owl.wiki.response.CommonResponse;
+import com.owl.wiki.response.EbookResponse;
 import com.owl.wiki.service.EbookService;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -25,9 +26,9 @@ public class EbookController {
     private EbookService ebookService; //ebookService
 
     @GetMapping("/list")
-    public CommonResp<List<Ebook>> list(){
-        CommonResp<List<Ebook>> resp = new CommonResp<>();
-        List<Ebook> eList = ebookService.list();
+    public CommonResponse<List<EbookResponse> > list(EbookRequest req){ //通过名称 模糊查询
+        CommonResponse<List<EbookResponse> > resp = new CommonResponse<>();
+        List<EbookResponse>  eList = ebookService.list(req);
         //resp.setSuccess(true); //由于默认是true就不设置
         resp.setContent(eList);
         return resp;
