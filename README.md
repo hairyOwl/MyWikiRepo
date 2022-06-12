@@ -36,6 +36,7 @@ src
 │    │     │        │       └─ TestController.java
 │    │     │        └─ WikiApplication.java
 │    │     └─ resources
+│    │           ├─ generator //Mybatis Generator
 │    │           ├─ mapper //sql 脚本
 │    │           ├─ application.properties  //项目配置
 │    │           ├─ banner.txt   //spring boot启动样式
