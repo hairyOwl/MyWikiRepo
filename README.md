@@ -1,14 +1,13 @@
 # MyWikiRepo
-Vue3+SpringBoot 知识库搭建
+Vue3+SpringBoot 知识库搭建  [相关笔记](https://github.com/hairyOwl/MyWikiRepo/wiki)
 
-# 前后端分离
-- 前端在wiki-front分支
-- 后端在wiki-back分支
-
-## 后端环境
+## 项目环境
+### 后端
 - spring boot 2.4.0
 - jdk 8
 - mysql 8
+### 前端
+- vue3
 
 ## 项目文件夹
 ```
@@ -23,9 +22,8 @@ wiki-back
 │    ├─ error.log
 │    ├─ trace.2022-06-08.0.log
 │    └─ trace.log
-├─ pom.xml
+├─ web   //前端代码路径 Vue3
 ├─ src
-src
 │    ├─  main
 │    │     ├─ java
 │    │     │    └─ com.owl.wiki
@@ -43,6 +41,7 @@ src
 │    │           ├─ application.properties  //项目配置
 │    │           ├─ banner.txt   //spring boot启动样式
 │    │           └─ logback-spring.xml //logback样式
+├─ pom.xml
 └─ wiki-back.iml
 ```
 
