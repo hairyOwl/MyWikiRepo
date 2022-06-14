@@ -45,12 +45,3 @@ wiki-back
 └─ wiki-back.iml
 ```
 
-## 功能or开发流程
-### 1.配置
- - 环境配置
- - 日志优化(Logback)
- - 集成热部署
-### 2.数据库准备
- - 创建数据库wiki和只使用wiki的用户
- - 添加Mybatis，mysql依赖 
- - 项目配置文件中配置数据源
