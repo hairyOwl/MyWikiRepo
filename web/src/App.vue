@@ -3,10 +3,10 @@
  * @Author: hairyOwl
  * @Date: 2022-06-13 15:46:23
  * @LastEditors: hairyOwl
- * @LastEditTime: 2022-06-15 10:10:00
+ * @LastEditTime: 2022-06-15 16:03:51
 -->
 <template>
-  <a-config-provider :locale="locale === 'en' ? enUS : zhCN">
+  <a-config-provider :local="zhCN">
     <a-layout>
       <!-- 页头 -->
       <the-header />
@@ -19,10 +19,9 @@
 </template>
 
 <script>
-  import { defineComponent, ref } from 'vue';
+  import { defineComponent } from 'vue';
   import TheHeader from '@/components/TheHeader.vue'
   import TheFooter from '@/components/TheFooter.vue'
-  import enUS from 'ant-design-vue/es/locale/en_US';
   import zhCN from 'ant-design-vue/es/locale/zh_CN';
 
   export default defineComponent({
@@ -33,7 +32,6 @@
 
     setup() {
       return {
-        enUS,
         zhCN,
       };
     },

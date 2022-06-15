@@ -30,13 +30,7 @@ public class EbookService {
         EbookExample.Criteria criteria = ebookExample.createCriteria();//外条件
         criteria.andNameLike("%"+req.getName()+"%"); //名称模糊查询
         List<Ebook> ebookList = ebookMapper.selectByExample(ebookExample);
-        //将List<Ebook> 转为 List<EbookResponse>
-        /*for (Ebook ebook : ebookList) { //对象的复制
-            //EbookResponse ebookResponse = new EbookResponse();
-            //BeanUtils.copyProperties(ebook,ebookResponse); //对象A 复制到 对象B  org.springframework.beans;
-            EbookResponse ebookResponse = CopyUtil.copy(ebook, EbookResponse.class);
-            responseList.add(ebookResponse);
-        }*/
         return CopyUtil.copyList(ebookList,EbookResponse.class);
+
     }
 }

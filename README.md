@@ -1,5 +1,5 @@
 # MyWikiRepo
-Vue3+SpringBoot 知识库搭建  [相关笔记](https://github.com/hairyOwl/MyWikiRepo/wiki)
+Vue3+SpringBoot 知识库搭建  [相关笔记-本项目wiki页](https://github.com/hairyOwl/MyWikiRepo/wiki)
 
 ## 项目环境
 ### 后端
@@ -27,6 +27,7 @@ wiki-back
 │    ├─  main
 │    │     ├─ java
 │    │     │    └─ com.owl.wiki
+│    │     │        ├─ controller //配置
 │    │     │        ├─ controller
 │    │     │        ├─ domain //实体类与数据表的映射
 │    │     │        ├─ mapper //持久层 接口

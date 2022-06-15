@@ -1,17 +1,21 @@
+<!--
+ * @Description: 主页面
+ * @Author: hairyOwl
+ * @Date: 2022-06-13 15:46:23
+ * @LastEditors: hairyOwl
+ * @LastEditTime: 2022-06-15 16:32:28
+-->
 <template>
   <a-layout>
         <!-- 侧边栏 -->
         <a-layout-sider width="200" style="background: #fff">
           <a-menu
-            v-model:selectedKeys="selectedKeys2"
-            v-model:openKeys="openKeys"
             mode="inline"
             :style="{ height: '100%', borderRight: 0 }"
           >
             <a-sub-menu key="sub1">
               <template #title>
                 <span>
-                  <user-outlined />
                   subnav 122
                 </span>
               </template>
@@ -23,7 +27,6 @@
             <a-sub-menu key="sub2">
               <template #title>
                 <span>
-                  <laptop-outlined />
                   subnav 2
                 </span>
               </template>
@@ -35,7 +38,6 @@
             <a-sub-menu key="sub3">
               <template #title>
                 <span>
-                  <notification-outlined />
                   subnav 3
                 </span>
               </template>
@@ -57,11 +59,15 @@
 
 <script lang="ts">
 import { defineComponent } from 'vue';
+import axios from 'axios'
 
 export default defineComponent({
   name: 'Home',
-  components: {
-    
-  },
+  setup(){
+    console.log('set up');
+    axios.get('http://localhost:8888/ebook/list?name=').then((response) =>{
+      console.log(response);
+    });
+  }
 });
 </script>

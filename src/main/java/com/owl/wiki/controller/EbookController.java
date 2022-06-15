@@ -26,9 +26,9 @@ public class EbookController {
     private EbookService ebookService; //ebookService
 
     @GetMapping("/list")
-    public CommonResponse<List<EbookResponse> > list(EbookRequest req){ //通过名称 模糊查询
+    public CommonResponse<List<EbookResponse> > list(EbookRequest request){ //通过名称 模糊查询
         CommonResponse<List<EbookResponse> > resp = new CommonResponse<>();
-        List<EbookResponse>  eList = ebookService.list(req);
+        List<EbookResponse>  eList = ebookService.list(request);
         //resp.setSuccess(true); //由于默认是true就不设置
         resp.setContent(eList);
         return resp;
