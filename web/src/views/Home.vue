@@ -3,7 +3,7 @@
  * @Author: hairyOwl
  * @Date: 2022-06-13 15:46:23
  * @LastEditors: hairyOwl
- * @LastEditTime: 2022-06-15 16:32:28
+ * @LastEditTime: 2022-06-16 22:05:49
 -->
 <template>
   <a-layout>
@@ -52,22 +52,39 @@
         <a-layout-content
             :style="{ background: '#fff', padding: '24px', margin: 0, minHeight: '280px' }"
           >
-            Content
+            <pre>{{ ebooks }}</pre>
+            <pre>{{ ebooks1 }}</pre>
+            <pre>{{ books }}</pre>
         </a-layout-content>
   </a-layout>
 </template>
 
 <script lang="ts">
-import { defineComponent } from 'vue';
+import { defineComponent,onMounted,ref ,reactive , toRef } from 'vue';
 import axios from 'axios'
 
 export default defineComponent({
   name: 'Home',
   setup(){
-    console.log('set up');
-    axios.get('http://localhost:8888/ebook/list?name=').then((response) =>{
-      console.log(response);
+    console.log('setup');
+    const ebooks = ref(); //响应式数据
+    const ebooks1 = reactive({books:[]}); //响应式数据
+
+    onMounted(()=>{
+      console.log('onMounted');
+      axios.get('http://localhost:8888/ebook/list?name=').then((response) =>{
+        const data  = response.data;
+        ebooks.value = data.content;
+        ebooks1.books = data.content;
+        
+      });
     });
+
+    return{
+      ebooks,
+      books : toRef(ebooks1, 'books'),
+      ebooks1,
+    }
   }
 });
 </script>
