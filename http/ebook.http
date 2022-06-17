@@ -3,6 +3,6 @@ GET http://localhost:8888/ebook/list?name=sp
 
 ###
 #搜索所有书籍列表
-GET http://localhost:8888/ebook/list?name=
+GET http://localhost:8888/ebook/list
 
 ###
