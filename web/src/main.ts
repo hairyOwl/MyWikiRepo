@@ -3,7 +3,7 @@
  * @Author: hairyOwl
  * @Date: 2022-06-13 15:46:23
  * @LastEditors: hairyOwl
- * @LastEditTime: 2022-06-19 16:46:35
+ * @LastEditTime: 2022-06-19 20:05:45
  */
 import { createApp } from 'vue'
 import App from './App.vue'
@@ -11,6 +11,9 @@ import router from './router'
 import store from './store'
 import Antd from 'ant-design-vue';
 import 'ant-design-vue/dist/antd.css';
+import axios from 'axios';
+
+axios.defaults.baseURL = process.env.VUE_APP_SERVER;
 
 const app = createApp(App);
 app.use(store)
