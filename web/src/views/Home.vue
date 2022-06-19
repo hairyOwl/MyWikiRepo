@@ -3,7 +3,7 @@
  * @Author: hairyOwl
  * @Date: 2022-06-13 15:46:23
  * @LastEditors: hairyOwl
- * @LastEditTime: 2022-06-17 16:54:06
+ * @LastEditTime: 2022-06-19 20:33:48
 -->
 <template>
   <a-layout>
@@ -56,8 +56,7 @@
             <!-- grid栅格列表 gutter间距column3列-->
             <a-list 
               item-layout="vertical" 
-              size="large" 
-              :pagination="disabled"
+              size="large"
               :grid = "{gutter:20 , column:3}" 
               :data-source="ebooks"
             >
@@ -99,20 +98,14 @@ export default defineComponent({
   },
   setup(){
     const ebooks = ref();
-    const pagination = {
-      onChange: (page: number) => {
-        console.log(page);
-      },
-      pageSize: 3,
-    };
+    // 收藏 点赞 评论 设置
     const actions: Record<string, string>[] = [
       { type: 'StarOutlined', text: '156' },
       { type: 'LikeOutlined', text: '156' },
       { type: 'MessageOutlined', text: '2' },
     ];
     onMounted(()=>{
-      console.log('onMounted');
-      axios.get('http://localhost:8888/ebook/list').then((response) =>{
+      axios.get('/ebook/list').then((response) =>{
         const data  = response.data;
         ebooks.value = data.content;
       });
@@ -120,7 +113,6 @@ export default defineComponent({
 
     return{
       ebooks,
-      pagination,
       actions,
     }
   }
