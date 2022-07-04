@@ -1,11 +1,15 @@
 package com.owl.wiki.service;
 
+import com.github.pagehelper.PageHelper;
+import com.github.pagehelper.PageInfo;
 import com.owl.wiki.domain.Ebook;
 import com.owl.wiki.domain.EbookExample;
 import com.owl.wiki.mapper.EbookMapper;
 import com.owl.wiki.request.EbookRequest;
 import com.owl.wiki.response.EbookResponse;
 import com.owl.wiki.utils.CopyUtil;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
 import org.springframework.util.ObjectUtils;
 
@@ -22,6 +26,8 @@ import java.util.List;
 @Service
 public class EbookService {
 
+    private static final Logger LOG = LoggerFactory.getLogger(EbookService.class);
+
     @Resource //注入EbookMapper @Resource是jdk的 @Autowired是spring的
     private EbookMapper ebookMapper;
 
@@ -32,7 +38,17 @@ public class EbookService {
         if(!ObjectUtils.isEmpty(req.getName())) { //条件不为空时进行模糊查询
             criteria.andNameLike("%" + req.getName() + "%"); //名称模糊查询
         }
+
+        //使用PageHelper 进行分页
+        PageHelper.startPage(1,3); //初始页是1 ，每页分页是3
         List<Ebook> ebookList = ebookMapper.selectByExample(ebookExample);
+
+        //分页相关数据
+        PageInfo<Ebook> pageInfo = new PageInfo<>(ebookList);
+        LOG.info("总行数，{}",pageInfo.getTotal());//总行数
+        LOG.info("总页数，{}",pageInfo.getPages());//总页数
+
+
         return CopyUtil.copyList(ebookList,EbookResponse.class);
 
     }

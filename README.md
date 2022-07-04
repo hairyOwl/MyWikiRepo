@@ -1,4 +1,4 @@
-# MyWikiRepo
+# owl-wiki
 Vue3+SpringBoot 知识库搭建  [相关笔记-本项目wiki页](https://github.com/hairyOwl/MyWikiRepo/wiki)
 
 ## 项目环境
