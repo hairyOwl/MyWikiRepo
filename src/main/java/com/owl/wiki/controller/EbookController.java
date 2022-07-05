@@ -3,13 +3,13 @@ package com.owl.wiki.controller;
 import com.owl.wiki.request.EbookRequest;
 import com.owl.wiki.response.CommonResponse;
 import com.owl.wiki.response.EbookResponse;
+import com.owl.wiki.response.PageResponse;
 import com.owl.wiki.service.EbookService;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import javax.annotation.Resource;
-import java.util.List;
 
 /**
  * @description: ebook 接口
@@ -26,11 +26,11 @@ public class EbookController {
     private EbookService ebookService; //ebookService
 
     @GetMapping("/list")
-    public CommonResponse<List<EbookResponse> > list(EbookRequest request){ //通过名称 模糊查询
-        CommonResponse<List<EbookResponse> > resp = new CommonResponse<>();
-        List<EbookResponse>  eList = ebookService.list(request);
+    public CommonResponse<PageResponse<EbookResponse> > list(EbookRequest request){ //通过名称 模糊查询
+        CommonResponse<PageResponse<EbookResponse> > response = new CommonResponse<>();
+        PageResponse<EbookResponse> eList = ebookService.list(request); //电子书查询条件
         //resp.setSuccess(true); //由于默认是true就不设置
-        resp.setContent(eList);
-        return resp;
+        response.setContent(eList);
+        return response;
     }
 }

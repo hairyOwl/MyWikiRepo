@@ -7,6 +7,7 @@ import com.owl.wiki.domain.EbookExample;
 import com.owl.wiki.mapper.EbookMapper;
 import com.owl.wiki.request.EbookRequest;
 import com.owl.wiki.response.EbookResponse;
+import com.owl.wiki.response.PageResponse;
 import com.owl.wiki.utils.CopyUtil;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -32,7 +33,8 @@ public class EbookService {
     private EbookMapper ebookMapper;
 
     //interface EbookMapper 调用 EbookMapper.xml 这边获取查询结果
-    public List<EbookResponse> list(EbookRequest req){
+    public PageResponse<EbookResponse> list(EbookRequest req){
+        //关键词查询
         EbookExample ebookExample = new EbookExample();
         EbookExample.Criteria criteria = ebookExample.createCriteria();//外条件
         if(!ObjectUtils.isEmpty(req.getName())) { //条件不为空时进行模糊查询
@@ -40,16 +42,21 @@ public class EbookService {
         }
 
         //使用PageHelper 进行分页
-        PageHelper.startPage(1,3); //初始页是1 ，每页分页是3
+        PageHelper.startPage(req.getPage(),req.getSize()); //当前页 ，每页数据量
         List<Ebook> ebookList = ebookMapper.selectByExample(ebookExample);
+        List<EbookResponse> list = CopyUtil.copyList(ebookList, EbookResponse.class);
 
         //分页相关数据
         PageInfo<Ebook> pageInfo = new PageInfo<>(ebookList);
         LOG.info("总行数，{}",pageInfo.getTotal());//总行数
         LOG.info("总页数，{}",pageInfo.getPages());//总页数
 
+        //封装响应体：总条数+当前页数据列表
+        PageResponse<EbookResponse> pageResponse = new PageResponse<>();
+        pageResponse.setTotal(pageInfo.getTotal());
+        pageResponse.setList(list);
 
-        return CopyUtil.copyList(ebookList,EbookResponse.class);
+        return pageResponse;
 
     }
 }

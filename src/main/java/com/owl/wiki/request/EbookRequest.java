@@ -6,8 +6,8 @@ package com.owl.wiki.request;
  * @author: 小哈
  * @date: 2022/6/12 16:55
  */
-public class EbookRequest {
-
+public class EbookRequest extends PageRequest{
+    //请求参数 查询条件
     private Long id;
     private String name;
 
